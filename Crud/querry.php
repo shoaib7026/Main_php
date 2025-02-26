@@ -89,6 +89,45 @@ if(isset($_POST["Registered"])){
 
 
 
+if(isset($_POST["login"])){
 
+    $useremail = $_POST['uemail'];
+    $userpassword = $_POST['upassword'];
+
+    $querry = $conn->prepare("SELECT * FROM userss WHERE Email = :uemail");
+    $querry->bindParam(':uemail', $useremail);
+    $querry->execute();
+$user = $querry->fetch(PDO::FETCH_ASSOC);
+
+if($user){
+  if($user['Password'] == $userpassword){
+
+
+
+    
+        echo "
+       <script>
+      alert('Welcome, " . $user['Name'] . "!');
+    window.location.href= 'signup.php';
+</script>
+        ";
+        exit();
+    }
+    else{
+        $userpassworderr = ' Password Nhi Mila Bhai ';
+    }
+
+    
+}
+
+else{
+   
+    $useremailerr = ' Email Nhi Mila Bhai ';
+
+}
+if(empty($userpassword)){
+    $userpassworderr = ' Password Kn Daleyga Bhai ';
+}
+}
 
 ?>
