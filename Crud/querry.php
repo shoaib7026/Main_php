@@ -1,29 +1,29 @@
 <?php
 include("dbcon.php");
+session_start();
 
 
-$username =   $useremail =  $userpassword = $userconfrmpassword ="";
-$usernameerr =   $useremailerr =  $userpassworderr = $userconfrmpassworderr ="";
+$username = $useremail = $userpassword = $userconfrmpassword = "";
+$usernameerr = $useremailerr = $userpassworderr = $userconfrmpassworderr = "";
 
 
-if(isset($_POST["Registered"])){
- 
+if (isset($_POST["Registered"])) {
+
     $username = $_POST['uname'];
     $useremail = $_POST['uemail'];
     $userpassword = $_POST['upassword'];
     $userconfrmpassword = $_POST['uconfirmpassword'];
 
-    if(empty($username)){
+    if (empty($username)) {
         $usernameerr = 'Enter Your good name please';
     }
-    if(empty($useremail)){
+    if (empty($useremail)) {
         $useremailerr = ' Aby bhai Email To Dalo';
 
-        
+
     }
     // yaha pr dalo email wala fetch assoc se krwaya he 
-
-    else{
+    else {
         $querry = $conn->prepare("SELECT * FROM userss WHERE Email = :uemail");
         $querry->bindParam(':uemail', $useremail);
 
@@ -31,28 +31,28 @@ if(isset($_POST["Registered"])){
 
         $emailCheck = $querry->fetch(PDO::FETCH_ASSOC);
 
-        if($emailCheck){
-            $useremailerr  = "Ap ye Email Nhi Dal Skty bhai Ye Kesi or ki he  ";
+        if ($emailCheck) {
+            $useremailerr = "Ap ye Email Nhi Dal Skty bhai Ye Kesi or ki he  ";
         }
     }
-  
-    
 
-  if(empty($userpassword)){
+
+
+    if (empty($userpassword)) {
         $userpassworderr = ' Password kn Daleyga';
     }
-   if(empty($userconfrmpassword)){
+    if (empty($userconfrmpassword)) {
         $userconfrmpassworderr = ' Confirm Password To Kro yar ';
     }
-    
 
-   if($userpassword != $userconfrmpassword){
-        $userconfrmpassworderr =' Password Match Nhi he Bhai ';
+
+    if ($userpassword != $userconfrmpassword) {
+        $userconfrmpassworderr = ' Password Match Nhi he Bhai ';
     }
 
 
 
-    if(empty($usernameerr) && empty($useremailerr) && empty($userpassworderr) && empty($userconfrmpassworderr)){
+    if (empty($usernameerr) && empty($useremailerr) && empty($userpassworderr) && empty($userconfrmpassworderr)) {
 
         $querry = $conn->prepare('INSERT INTO userss (Name,Email,Password,Confrm_Password) VALUES (:uname , :uemail ,:upassword, :uconfirmpassword)');
 
@@ -62,24 +62,22 @@ if(isset($_POST["Registered"])){
         $querry->bindParam(':uconfirmpassword', $userconfrmpassword);
 
 
-     if($querry->execute()){
-        echo "
+        if ($querry->execute()) {
+            echo "
        <script>
       alert('Welcome, " . $username . "!');
     window.location.href= 'signup.php';
 </script>
         ";
-        exit();
-     }
+            exit();
+        } else {
 
-     else{
-       
-        echo '<script> 
+            echo '<script> 
 
         alert("Erorr");
         </script> ';
-     }
-        
+        }
+
     }
 
 
@@ -89,7 +87,7 @@ if(isset($_POST["Registered"])){
 
 
 
-if(isset($_POST["login"])){
+if (isset($_POST["login"])) {
 
     $useremail = $_POST['uemail'];
     $userpassword = $_POST['upassword'];
@@ -97,37 +95,53 @@ if(isset($_POST["login"])){
     $querry = $conn->prepare("SELECT * FROM userss WHERE Email = :uemail");
     $querry->bindParam(':uemail', $useremail);
     $querry->execute();
-$user = $querry->fetch(PDO::FETCH_ASSOC);
+    $user = $querry->fetch(PDO::FETCH_ASSOC);
 
-if($user){
-  if($user['Password'] == $userpassword){
+    if ($user) {
+        if ($user['Password'] == $userpassword) {
+
+               $_SESSION['userid'] = $user['id'];
+               $_SESSION['name'] = $user['Name'];
+               $_SESSION['role'] = $user['Role_id'];
+               $_SESSION['activity'] = time();
 
 
+               if($user['Role_id'] == 2){
+                header("location: admin.php");
+                exit();
+               }
+               else{
+                   header("location: user.php");
+               }
 
-    
-        echo "
-       <script>
-      alert('Welcome, " . $user['Name'] . "!');
-    window.location.href= 'signup.php';
-</script>
-        ";
-        exit();
+//             echo "
+//        <script>
+//       alert('Welcome, " . $user['Name'] . "!');
+//     window.location.href= 'signup.php';
+// </script>
+//         ";
+            exit();
+        } else {
+            $userpassworderr = ' Apna Password hi yad nhi wa bhai wa  ';
+        }
+
+
+    } else {
+
+        $useremailerr = ' Email Nhi Mila Bhai ';
+
     }
-    else{
-        $userpassworderr = ' Password Nhi Mila Bhai ';
+    if (empty($userpassword)) {
+        $userpassworderr = ' Password Kn Daleyga Bhai ';
     }
 
-    
-}
+    if (empty($useremail)) {
+        $useremailerr = 'Email Kn Daleyga Bhai';
+    }
 
-else{
-   
-    $useremailerr = ' Email Nhi Mila Bhai ';
 
-}
-if(empty($userpassword)){
-    $userpassworderr = ' Password Kn Daleyga Bhai ';
-}
+
+
 }
 
 ?>
