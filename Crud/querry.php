@@ -62,6 +62,7 @@ if (isset($_POST["Registered"])) {
         $querry->bindParam(':uconfirmpassword', $userconfrmpassword);
 
 
+
         if ($querry->execute()) {
             echo "
        <script>
@@ -103,7 +104,6 @@ if (isset($_POST["login"])) {
                $_SESSION['userid'] = $user['id'];
                $_SESSION['name'] = $user['Name'];
                $_SESSION['role'] = $user['Role_id'];
-               $_SESSION['activity'] = time();
 
 
                if($user['Role_id'] == 2){
