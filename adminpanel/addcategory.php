@@ -1,16 +1,47 @@
 <?php
 include('components/header.php');
+include('php/A_querry.php');
+
 ?>
 
- <!-- Blank Start -->
- <div class="container-fluid pt-4 px-4">
-                <div class="row vh-100 bg-light rounded align-items-center justify-content-center mx-0">
-                    <div class="col-md-6 text-center">
-                        <h3>This is blank page</h3>
-                    </div>
+
+
+<div class="container-fluid pt-4 px-4">
+                <div class="row vh-100 bg-light  justify-content-center ">
+
+
+                   <form  method="post" enctype="multipart/form-data" style=" width: 500px;">
+
+                   <h3 class="text-center">Insert Data From here </h3>
+
+                    <div class="form-group">
+                      <label for="">Name </label>
+                      <input type="text" name="name" id="" class="form-control" placeholder="" value="<?php echo $name;  ?>" aria-describedby="helpId">
+                      <small id="helpId" class="text-danger"><?php echo $nameerr ?></small>
+                    </div><br>
+
+                    <div class="form-group">
+                      <label for="">Description</label>
+                      <input type="text" name="description" id="" class="form-control" placeholder="" value="<?php echo $description ;  ?>" aria-describedby="helpId">
+                      <small id="helpId" class="text-danger"><?php echo  $descriptionerr ?></small>
+                    </div><br>
+
+                    <div class="form-group">
+                   <label for="">Image</label>
+                  <input type="file" name="image" id="" class="form-control" placeholder="" value="<?php echo $image; ?>" aria-describedby="helpId">
+                  <small id="helpId" class="text-danger"><?php echo $imageerr ?></small>
+                </div>
+
+
+
+                   
+                    <div style="text-align: center ; margin-top: 15px;">
+        <button class="btn btn-success  " type="submit" name="addcategory">Add Category</button>
+    </div>
+
+                   </form>
                 </div>
             </div>
-            <!-- Blank End -->
 
             <?php
             

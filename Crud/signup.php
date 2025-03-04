@@ -1,6 +1,5 @@
 <?php
 include("querry.php");
-
 ?>
 
 <!doctype html>
