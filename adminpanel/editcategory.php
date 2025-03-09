@@ -21,6 +21,29 @@ if(isset($_GET['categoryid'])){
     // print_r($selectedcategory);
 
 }
+
+if(isset($_POST['updatecategory'])){
+  
+  $updatedname = $_POST['uname'];
+  $updatedescription = $_POST['udescription'];
+ 
+  $updtaequerry = $pdo->prepare('UPDATE admincategoriesdata SET Name = :cname , Description = :cdes WHERE id = :cid');
+
+  $updtaequerry->bindParam(':cname', $updatedname);
+  $updtaequerry->bindParam(':cdes',   $updatedescription);
+  $updtaequerry->bindParam(':cid', $urlcatid);
+
+  if($updtaequerry->execute()){
+    echo "<script>alert('Category updated successfully!');</script>";
+    echo "<script>window.location.href='addcategory.php';</script>";
+  }
+  else {
+    print_r($updtaequerry->errorInfo()); // Yeh error print karega
+}
+
+
+}
+
 ?>
 
 <div class="container-fluid pt-4 px-4">
@@ -33,12 +56,12 @@ if(isset($_GET['categoryid'])){
 
                     <div class="form-group">
                       <label for="">Name </label>
-                      <input type="text" name="name" id="" class="form-control" placeholder="" value="<?php echo $selectedcategory['Name'];  ?>" aria-describedby="helpId">
+                      <input type="text" name="uname" id="" class="form-control" placeholder="" value="<?php echo $selectedcategory['Name'];  ?>" aria-describedby="helpId">
                     </div><br>
 
                     <div class="form-group">
                       <label for="">Description</label>
-                      <input type="text" name="description" id="" class="form-control" placeholder="" value="<?php echo $selectedcategory['Description'] ;  ?>" aria-describedby="helpId">
+                      <input type="text" name="udescription" id="" class="form-control" placeholder="" value="<?php echo $selectedcategory['Description'] ;  ?>" aria-describedby="helpId">
                     </div><br>
 
                     <div class="form-group">
