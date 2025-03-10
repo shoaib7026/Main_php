@@ -29,6 +29,20 @@ if(isset($_POST['updatecategory'])){
  
   $updtaequerry = $pdo->prepare('UPDATE admincategoriesdata SET Name = :cname , Description = :cdes WHERE id = :cid');
 
+
+if(!empty($_FILES['image']['nane'])){
+  $categoryimage = 
+
+}
+
+
+
+
+
+
+
+
+
   $updtaequerry->bindParam(':cname', $updatedname);
   $updtaequerry->bindParam(':cdes',   $updatedescription);
   $updtaequerry->bindParam(':cid', $urlcatid);
