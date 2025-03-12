@@ -1,6 +1,6 @@
 <?php
 include('components/header.php');
-include('php/A_querry.php');
+include('php/Addactegro.php');
 
 ?>
 
@@ -12,24 +12,24 @@ include('php/A_querry.php');
 
                    <form  method="post" enctype="multipart/form-data" style=" width: 500px;">
 
-                   <h3 class="text-center">Insert Data From here </h3>
+                   <h3 class="text-center">Add Categories </h3>
 
                     <div class="form-group">
                       <label for="">Name </label>
-                      <input type="text" name="name" id="" class="form-control" placeholder="" value="<?php echo $name;  ?>" aria-describedby="helpId">
-                      <small id="helpId" class="text-danger"><?php echo $nameerr ?></small>
+                      <input type="text" name="name" id="" class="form-control" placeholder="" value="<?php echo $categoryname;  ?>" aria-describedby="helpId">
+                      <small id="helpId" class="text-danger"><?php echo $categorynameerr ?></small>
                     </div><br>
 
                     <div class="form-group">
                       <label for="">Description</label>
-                      <input type="text" name="description" id="" class="form-control" placeholder="" value="<?php echo $description ;  ?>" aria-describedby="helpId">
-                      <small id="helpId" class="text-danger"><?php echo  $descriptionerr ?></small>
+                      <input type="text" name="description" id="" class="form-control" placeholder="" value="<?php echo  $category_description ;  ?>" aria-describedby="helpId">
+                      <small id="helpId" class="text-danger"><?php echo   $category_descriptionerr ?></small>
                     </div><br>
 
                     <div class="form-group">
                    <label for="">Image</label>
-                  <input type="file" name="image" id="" class="form-control" placeholder="" value="<?php echo $image; ?>" aria-describedby="helpId">
-                  <small id="helpId" class="text-danger"><?php echo $imageerr ?></small>
+                  <input type="file" name="image" id="" class="form-control" placeholder="" value="<?php echo  $category_image_name; ?>" aria-describedby="helpId">
+                  <small id="helpId" class="text-danger"><?php echo  $category_image_nameerr ?></small>
                 </div>
 
 

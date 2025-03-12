@@ -1,63 +1,57 @@
 <?php
-include('components/header.php');
-include('php/A_querry.php');
-
-
+include("components/header.php");
+include("php/A_dbcon.php");
 ?>
 
 
-   <!-- Blank Start -->
-   <div class="container-fluid pt-4 px-4">
-                <div class="row  bg-light rounded  justify-content-center mx-0">
-                    <div class="col-md-12 ">
-                       <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Catgeory Id</th>
-                                <th>Category Name</th>
-                                <th>Category Description</th>
-                                <th>Category Image</th>
-                                <th>Action</th>
-                                <th>Action</th>
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-md-12">
+            <div class="bg-light rounded  p-4">
+                <h4 class="mb-4 text-center">Catgeory table</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th> Name</th>
+                            <th> Description</th>
+                            <th>Image</th>
+                            <th>Action</th>
+                            <th>Action</th>
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php 
-                            $querry = $pdo->query("SELECT * FROM admincategoriesdata");
-                            $allcategories = $querry->fetchAll(PDO::FETCH_ASSOC);
-                            // print_r($allcategories);
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $querry = $pdo->query("SELECT * From categories");
+                        $allcategories = $querry->fetchAll(PDO::FETCH_ASSOC);
 
-                            
-
+                        foreach ($allcategories as $category) {
                             ?>
-
-<?php foreach($allcategories as $category){   ?>                            
                             <tr>
-                                <td><?php echo $category['id'];  ?></td>
-                                <td><?php echo $category['Name'];  ?></td>
-                                <td><?php echo $category['Description'];  ?></td>
-                                <td><img height="100px " src="categoriesimages/<?php echo $category['Images'];?>"></td>
-                                <td><a class="btn btn-info" href="editcategory.php?categoryid=<?php echo $category['id']; ?> ">Edit</a></td>
-                                <td><a class="btn btn-danger" href="">Delete</a></td>
+                                <td><?php echo $category['id']; ?></td>
+                                <td><?php echo $category['Name']; ?></td>
+                                <td><?php echo $category['Description'];?></td>
+                                <td><img height="100px" src="A_Categories_Images/<?php echo $category['Image']; ?>" alt="Image"></td>
+
+                                <td><a class="btn btn-info" href="editcategory.php?categoryid=<?php echo $category['id']; ?>">Edit</a></td>
+                                <td><a class="btn btn-danger" href="editcategory.php?cid=<?php echo $category['id']; ?>">Delete</a></td>
                             </tr>
-                        <?php } ?>
-                        </tbody>
-                       </table>
-                    </div>
-                </div>
+
+                            <?php
+                        }
+
+                        ?>
+
+
+
+                    </tbody>
+                </table>
             </div>
-            <!-- Blank End -->
+        </div>
+    </div>
+</div>
 
-
-
-
-
-
-
-
-
-            <?php
-            
-            include('components/footer.php');
-            ?>
+<?php
+include("components/footer.php");
+?>

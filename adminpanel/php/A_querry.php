@@ -4,6 +4,8 @@ include("A_dbcon.php");
 ?>
 
 <?php
+
+
  $name  =  $description =   $image = "";
  $nameerr  =  $descriptionerr =   $imageerr = "";
 
