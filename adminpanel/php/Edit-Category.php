@@ -25,7 +25,7 @@ if(isset($_GET["categoryid"])){
             if(in_array($extension, $allowed_extension)){
                 move_uploaded_file($image_tmp_path, $destination);
 
-                // ✅ Image + Name + Description Update Query
+                //  Image + Name + Description Update Query
                 $updatequery = $pdo->prepare("UPDATE categories SET Name = :cname, Description = :cdes, Image = :cimg WHERE Id = :cid");
                 $updatequery->bindParam(":cimg", $image_name);
             } else {
@@ -54,7 +54,7 @@ if(isset($_GET["categoryid"])){
 
 
 
-// update wali querry yaha se shoro he 
+//Delete wali querry yaha se shoro he 
 
 if(isset($_GET['cid'])){
     $deleteid = $_GET['cid'];
