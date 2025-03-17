@@ -9,47 +9,55 @@ include('php/Edit-Product.php');
 
         <form method="post" enctype="multipart/form-data" style=" width: 500px;">
 
-            <h3 class="text-center">Add Products </h3>
+            <h3 class="text-center">Update Products </h3>
 
             <div class="form-group">
                 <label for="">Name </label>
-                <input type="text" name="pname" id="" class="form-control" value="<?php echo $selectedProduct['Name']; ?> " placeholder="" aria-describedby="helpId">
-                <!-- <small id="helpId" class="text-danger"><?php echo $productnameerr ?></small> -->
+                <input type="text" name="updname" id="" class="form-control" value="<?php echo $selectedProduct['Name']; ?> " placeholder="" aria-describedby="helpId">
+                <small id="helpId" class="text-danger"><?php echo $updnameerr; ?></small>
             </div><br>
             <div class="form-group">
                 <label for="">Price </label>
-                <input type="number" name="pprice" id="" class="form-control" value="<?php echo $selectedProduct['Price']; ?>" placeholder="" aria-describedby="helpId">
-                <!-- <small id="helpId" class="text-danger"><?php echo $productpriceerr ?></small> -->
+                <input type="number" name="updprice" id="" class="form-control" value="<?php echo $selectedProduct['Price']; ?>" placeholder="" aria-describedby="helpId">
+                <small id="helpId" class="text-danger"><?php echo $updpriceerr; ?></small>
             </div><br>
 
             <div class="form-group">
                 <label for="">Description</label>
-                <input type="text" name="pdescription" id=""  class="form-control" value="<?php echo $selectedProduct['Description']; ?> placeholder="" aria-describedby="helpId">
-                <!-- <small id="helpId" class="text-danger"><?php echo $productdescerr  ?></small> -->
+                <input type="text" name="upddescription" id=""  class="form-control" value="<?php echo $selectedProduct['Description']; ?> placeholder="" aria-describedby="helpId">
+                <small id="helpId" class="text-danger"><?php echo $upddescriptionerr;  ?></small>
             </div><br>
 
             <div class="form-group">
                 <label for="">Image</label>
-                <input type="file" name="pimage" id="" class="form-control"  placeholder="" aria-describedby="helpId">
+                <input type="file" name="updimage" id="" class="form-control"  placeholder="" aria-describedby="helpId">
                 <img height="100px" src="Product_images/<?php echo $selectedProduct['Image']; ?>" alt="">
             </div><br>
 
             <div class="form-group">
            
-                <select name="cid" id="" class="form-control"  aria-describedby="helpId"  >
-                    <option value="">Select Category  </option>
-                    <?php
-                    $querry = $pdo->query('SELECT * FROM categories');
-                    $categories = $querry->fetchAll(PDO::FETCH_ASSOC);
-                    foreach ($categories as $category) {
-                    ?>
-                    <option value="<?php echo $category['id']; ?>"><?php echo $category['Name']; ?></option>
-                  <?php
-                    }
-                  ?>
+                <select name="updcid" id="" class="form-control"  aria-describedby="helpId"  >
+                   
+                   <option value="<?php echo $selectedProduct['Category_Id']; ?>"><?php echo $selectedProduct['category_name'];?></option>
+                <?php
+                       $querry = $pdo->prepare('SELECT * FROM categories WHERE id != :Selected_catgeory_id'); 
+                       $querry->bindParam(':Selected_catgeory_id', $selectedProduct['Category_Id']);
+                       $querry->execute();
 
+                       $allcategories = $querry->fetchAll(PDO::FETCH_ASSOC);
+
+                       foreach($allcategories as $Category){
+                        ?>
+<option value="<?php echo $Category['id']; ?>"><?php echo $Category['Name']; ?></option>
+
+<?php
+
+                       }
+                ?>
+                
                 </select>
-                <!-- <small id="helpId" class="text-danger"><?php echo $pcategoryiderr ?></small> -->
+
+                <small id="helpId" class="text-danger"><?php echo $updcategoryerr;  ?></small>
 
 
             </div>
