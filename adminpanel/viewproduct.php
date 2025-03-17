@@ -1,6 +1,7 @@
 <?php
-include("components/header.php");
 include("php/A_dbcon.php");
+
+include("components/header.php");
 ?>
 
 
