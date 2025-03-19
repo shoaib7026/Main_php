@@ -19,14 +19,14 @@ if(isset($_GET["productid"])){
     $querry->execute();
     $selectedProduct = $querry->fetch(PDO::FETCH_ASSOC);
 
-    // print_r($selectedProduct); 
+    print_r($selectedProduct); 
     $updname =    $updprice =    $upddescription =   $updcategory = "";
     $updnameerr =    $updpriceerr =    $upddescriptionerr =   $updcategoryerr = "";
 
   if(isset($_POST['updateproduct'])){
     $updname = $_POST['updname'];
     $updprice = $_POST['updprice'];
-    $upddescription = $_POST['upddescription'];
+    $upddescription = $_POST['updescription'];
     $updcategory = $_POST['updcid'];
     $selectedproductid = $_GET['productid'];
 

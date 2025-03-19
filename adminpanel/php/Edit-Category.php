@@ -26,7 +26,7 @@ if(isset($_GET["categoryid"])){
                 move_uploaded_file($image_tmp_path, $destination);
 
                 //  Image + Name + Description Update Query
-                $updatequery = $pdo->prepare("UPDATE categories SET Name = :cname, Description = :cdes, Image = :cimg WHERE Id = :cid");
+                $updatequery = $pdo->prepare("UPDATE categories SET Name = :cname, Description = :cdes, Images = :cimg WHERE Id = :cid");
                 $updatequery->bindParam(":cimg", $image_name);
             } else {
                 echo '<script>alert("Invalid image format! Use jpg, jpeg, or png.")</script>';

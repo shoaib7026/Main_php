@@ -32,7 +32,7 @@ include("php/A_dbcon.php");
                                 <td><?php echo $category['id']; ?></td>
                                 <td><?php echo $category['Name']; ?></td>
                                 <td><?php echo $category['Description'];?></td>
-                                <td><img height="100px" src="A_Categories_Images/<?php echo $category['Image']; ?>" alt="Image"></td>
+                                <td><img height="100px" src="A_Categories_Images/<?php echo $category['Images']; ?>" alt="Image"></td>
 
                                 <td><a class="btn btn-info" href="editcategory.php?categoryid=<?php echo $category['id']; ?>">Edit</a></td>
                                 <td><a class="btn btn-danger" href="editcategory.php?cid=<?php echo $category['id']; ?>">Delete</a></td>

@@ -14,18 +14,18 @@ include('components/header.php');
 
             <div class="form-group">
                 <label for="">Name </label>
-                <input type="text" name="pname" id="" class="form-control" value="<?php echo $selectedProduct['Name']; ?> " placeholder="" aria-describedby="helpId">
+                <input type="text" name="updname" id="" class="form-control" value="<?php echo $selectedProduct['Name']; ?> " placeholder="" aria-describedby="helpId">
                 <!-- <small id="helpId" class="text-danger"><?php echo $productnameerr ?></small> -->
             </div><br>
             <div class="form-group">
                 <label for="">Price </label>
-                <input type="number" name="pprice" id="" class="form-control" value="<?php echo $selectedProduct['Price']; ?>" placeholder="" aria-describedby="helpId">
+                <input type="number" name="updprice" id="" class="form-control" value="<?php echo $selectedProduct['Price']; ?>" placeholder="" aria-describedby="helpId">
                 <!-- <small id="helpId" class="text-danger"><?php echo $productpriceerr ?></small> -->
             </div><br>
 
             <div class="form-group">
                 <label for="">Description</label>
-                <input type="text" name="pdescription" id=""  class="form-control" value="<?php echo $selectedProduct['Description']; ?> placeholder="" aria-describedby="helpId">
+                <input type="text" name="updescription" id=""  class="form-control" value="<?php echo $selectedProduct['Description']; ?> placeholder="" aria-describedby="helpId">
                 <!-- <small id="helpId" class="text-danger"><?php echo $productdescerr  ?></small> -->
             </div><br>
 

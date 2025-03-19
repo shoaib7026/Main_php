@@ -33,7 +33,7 @@ if(empty( $category_image_nameerr)&& empty($category_descriptionerr) && empty($c
     if(in_array($extension, $format)){
         move_uploaded_file($temp_path, $destination);
 
-        $querry= $pdo->prepare("INSERT INTO categories (Name , Description , Image) VALUES (:cname, :cdes , :cimg) ");
+        $querry= $pdo->prepare("INSERT INTO categories (Name , Description , Images) VALUES (:cname, :cdes , :cimg) ");
 
         $querry->bindParam(':cname', $categoryname);
         $querry->bindParam(':cdes', $category_description);

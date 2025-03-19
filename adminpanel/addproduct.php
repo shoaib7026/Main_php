@@ -1,6 +1,7 @@
 <?php
-include('components/header.php');
 include('php/Add_Product.php');
+
+include('components/header.php');
 
 ?>
 
