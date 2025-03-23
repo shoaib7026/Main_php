@@ -5,12 +5,12 @@ $pass = "";
 
 $pdo = new Pdo($server , $user , $pass);
 
-// if($conn){
+// if($pdo){
 //     echo "<script> alert('Connection Succesful')</script>";
 // }
 // else{
 
-// echo "Connection failed " . $conn->errorInfo();
+// echo "Connection failed " . $pdo->errorInfo();
 // }
 
 

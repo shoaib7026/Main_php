@@ -1,6 +1,7 @@
 <?php
-include('components/header.php');
 include('php/Addactegro.php');
+include('components/header.php');
+
 
 ?>
 
