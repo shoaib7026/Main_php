@@ -121,16 +121,27 @@ if (isset($_POST["login"])) {
 // </script>
 //         ";
             exit();
-        } else {
+        } 
+        
+        
+        else {
             $userpassworderr = ' Apna Password hi yad nhi wa bhai wa  ';
         }
 
 
-    } else {
+    } 
+    else {
 
         $useremailerr = ' Email Nhi Mila Bhai ';
 
     }
+
+
+
+
+
+
+    
     if (empty($userpassword)) {
         $userpassworderr = ' Password Kn Daleyga Bhai ';
     }

@@ -24,9 +24,7 @@ include("querry.php");
   <body>
       
 
-  <form   method="POST" >
-
-
+  <form method="POST" >
     <div class="form-group">
       <label for="">Name</label>
       <input type="text" name="uname" id="" class="form-control" placeholder="" value="<?php echo $username; ?>"
