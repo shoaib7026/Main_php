@@ -104,7 +104,7 @@ include('php/connection.php')
 				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
 					<!-- Block1 -->
 					<div class="block1 wrap-pic-w">
-						<img src="adminpanel/A_Categories_images/<?php echo $category['Image']; ?>" alt="IMG-BANNER">
+						<img src="adminpanel/A_Categories_images/<?php echo $category['Images']; ?>" alt="IMG-BANNER">
 
 						<a href="product.php" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
@@ -150,25 +150,23 @@ include('php/connection.php')
 						All Products
 					</button>
 
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
-						Women
-					</button>
+<?php
+ 
+   $query = $pdo->query("SELECT * FROM categories");
+     $allcategory = $query->fetchAll(PDO::FETCH_ASSOC);
+	//  print_r($allcategory);
+	//  die();
+	 foreach($allcategory as $catgeory){
 
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
-						Men
-					</button>
+?>
 
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
-						Bag
+					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".<?php echo $category['id']?>">
+						<?php echo $catgeory['Name']; ?>
 					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".shoes">
-						Shoes
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
-						Watches
-					</button>
+<?php 
+	 }
+?>
+					
 				</div>
 
 				<div class="flex-w flex-c-m m-tb-10">
