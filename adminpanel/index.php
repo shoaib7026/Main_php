@@ -1,8 +1,17 @@
 
 <?php
+session_start();
+
 include('components/header.php');
 ?>
 
+<?php
+
+if(isset($_GET['success'])){
+    $successMessage = $_GET['success'];
+    echo "<script>alert('$successMessage');</script>";
+}
+?>
 
 
             <!-- Sale & Revenue Start -->
